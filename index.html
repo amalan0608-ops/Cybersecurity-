@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cyber Security Tools</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#eef2f5;--panel:#fff;--ink:#0f1b2a;--mute:#51606f;--line:#cfd8e0;--acc:#0b6e6e;--accInk:#fff;--bad:#c2410c;--ok:#15803d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c141d;--panel:#141f2b;--ink:#e6edf3;--mute:#9aa9b8;--line:#263646;--acc:#4fd1c5;--accInk:#06201f;--bad:#fb923c;--ok:#4ade80}}
+:root[data-theme="dark"]{--bg:#0c141d;--panel:#141f2b;--ink:#e6edf3;--mute:#9aa9b8;--line:#263646;--acc:#4fd1c5;--accInk:#06201f;--bad:#fb923c;--ok:#4ade80}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;font-weight:600}
+nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-weight:400}
+nav a:hover{color:var(--acc)}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:28px 0 14px;font-weight:800;letter-spacing:-.02em;max-width:16ch}
+.lead{color:var(--mute);max-width:52ch;margin:0 0 28px}
+.lab{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-bottom:56px}
+.box{background:var(--panel);border:2px solid var(--ink);border-radius:6px;padding:18px}
+.box h2{margin:0 0 4px;font-size:1.1rem}
+.box p{margin:0 0 12px;color:var(--mute);font-size:.9rem}
+input{width:100%;padding:11px 12px;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.meter{display:flex;gap:4px;margin:12px 0 8px}
+.meter i{flex:1;height:8px;border-radius:2px;background:var(--line)}
+.out{font-size:.9rem;min-height:1.4em;word-break:break-all}
+.small{font-size:.8rem;color:var(--mute)}
+.hash{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem}
+h2.sec{font-size:1.6rem;margin:0 0 6px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+.filters button{font:inherit;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;min-height:40px}
+.filters button[aria-pressed="true"]{background:var(--acc);color:var(--accInk);border-color:var(--acc);font-weight:600}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin-bottom:56px}
+.card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:4px;padding:16px}
+.card h3{margin:0 0 2px;font-size:1.05rem}
+.card .cat{color:var(--acc);font-size:.85rem;font-weight:600;margin-bottom:6px}
+.card p{margin:0 0 10px;color:var(--mute);font-size:.92rem}
+.card a{color:var(--ink);font-weight:600;font-size:.9rem}
+.tips{padding-left:20px;max-width:64ch;margin:12px 0 56px}
+.tips li{margin-bottom:8px}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mute);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><span class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>SecureKit</span>
+<span><a href="#tools">Tools</a><a href="#habits">Habits</a></span></nav>
+
+<header>
+<h1>Cyber security tools, in one place.</h1>
+<p class="lead">Browse trusted tools for scanning, monitoring, protecting and investigating. Two small utilities run right here in your browser; nothing you type leaves this page.</p>
+<div class="lab">
+ <section class="box" aria-labelledby="pw">
+  <h2 id="pw">Password strength check</h2>
+  <p>Estimates strength from length and variety.</p>
+  <label class="small" for="pwin">Type a password to test</label>
+  <input id="pwin" type="text" autocomplete="off" spellcheck="false">
+  <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="out" id="pwout" aria-live="polite">Waiting for input.</div>
+ </section>
+ <section class="box" aria-labelledby="hs">
+  <h2 id="hs">SHA-256 file integrity hash</h2>
+  <p>Hash text to compare against a published checksum.</p>
+  <label class="small" for="hsin">Text to hash</label>
+  <input id="hsin" type="text" autocomplete="off" spellcheck="false">
+  <div class="out hash" id="hsout" aria-live="polite" style="margin-top:12px">Waiting for input.</div>
+ </section>
+</div>
+</header>
+
+<main>
+<h2 class="sec" id="tools">Tool directory (39 tools)</h2>
+<p class="small" style="margin:0">Use scanning and testing tools only on systems you own or have written permission to test.</p>
+<div class="filters" role="group" aria-label="Filter by category" id="filters"></div>
+<div class="grid" id="grid"></div>
+
+<h2 class="sec" id="habits">Five habits that stop most attacks</h2>
+<ol class="tips">
+<li>Use a password manager and a unique password for every account.</li>
+<li>Turn on multi-factor authentication, preferably with a passkey or security key.</li>
+<li>Install updates for your operating system, browser and apps promptly.</li>
+<li>Keep offline or versioned backups, and test restoring from them.</li>
+<li>Check links and attachments before opening, even from known senders.</li>
+</ol>
+</main>
+<footer>SecureKit is an educational directory. Tool descriptions are summaries; check each project's site for current licence and features.</footer>
+</div>
+
+<script>
+const TOOLS=[
+["Nmap","Network","Maps hosts, open ports and services on networks you manage.","https://nmap.org"],
+["Wireshark","Network","Captures and inspects network traffic packet by packet.","https://www.wireshark.org"],
+["Zeek","Network","Turns network traffic into structured logs for monitoring.","https://zeek.org"],
+["Snort","Defense","Open-source intrusion detection and prevention system.","https://www.snort.org"],
+["OSSEC / Wazuh","Defense","Host monitoring, log analysis and file integrity checks.","https://wazuh.com"],
+["Bitwarden","Defense","Password manager with an open-source core.","https://bitwarden.com"],
+["OWASP ZAP","Web","Finds common vulnerabilities in web apps during testing.","https://www.zaproxy.org"],
+["Burp Suite","Web","Proxy-based toolkit for web application security testing.","https://portswigger.net/burp"],
+["Nikto","Web","Checks web servers for outdated software and risky settings.","https://cirt.net/Nikto2"],
+["Autopsy","Forensics","Digital forensics platform for disk and file analysis.","https://www.autopsy.com"],
+["Volatility","Forensics","Analyses memory dumps to investigate incidents.","https://www.volatilityfoundation.org"],
+["VeraCrypt","Crypto","Encrypts disks and containers with strong ciphers.","https://www.veracrypt.fr"],
+["GnuPG","Crypto","Encrypts and signs files and email.","https://gnupg.org"],
+["OpenVAS","Web","Vulnerability scanner for servers and network devices.","https://www.openvas.org"],
+["Suricata","Network","High-speed network threat detection and monitoring engine.","https://suricata.io"],
+["pfSense","Network","Open-source firewall and router with VPN support.","https://www.pfsense.org"],
+["WireGuard","Network","Fast, modern VPN with a small, auditable codebase.","https://www.wireguard.com"],
+["Security Onion","Defense","Linux distribution for threat hunting and log management.","https://securityonionsolutions.com"],
+["Lynis","Defense","Audits Linux and Unix systems and suggests hardening steps.","https://cisofy.com/lynis/"],
+["Fail2Ban","Defense","Blocks IP addresses that show repeated failed logins.","https://github.com/fail2ban/fail2ban"],
+["ClamAV","Defense","Open-source antivirus engine for files and mail gateways.","https://www.clamav.net"],
+["Wapiti","Web","Black-box scanner that tests web apps for common flaws.","https://wapiti-scanner.github.io"],
+["ModSecurity","Web","Web application firewall engine for Apache, Nginx and IIS.","https://modsecurity.org"],
+["Mozilla Observatory","Web","Grades a site's security headers and configuration.","https://developer.mozilla.org/en-US/observatory"],
+["Ghidra","Malware","Reverse-engineering suite for analysing suspicious binaries.","https://ghidra-sre.org"],
+["YARA","Malware","Writes rules that identify and classify malware samples.","https://virustotal.github.io/yara/"],
+["Cuckoo / CAPE","Malware","Runs samples in a sandbox and reports their behaviour.","https://capesandbox.com"],
+["The Sleuth Kit","Forensics","Command-line tools for disk image and file system analysis.","https://www.sleuthkit.org"],
+["FTK Imager","Forensics","Creates forensic images and previews evidence safely.","https://www.exterro.com/digital-forensics-software/ftk-imager"],
+["Trivy","Cloud","Scans containers, code and infrastructure files for vulnerabilities.","https://trivy.dev"],
+["Prowler","Cloud","Checks AWS, Azure and Google Cloud against security benchmarks.","https://prowler.com"],
+["Gitleaks","Cloud","Finds secrets such as API keys committed to git repositories.","https://gitleaks.io"],
+["Keycloak","Identity","Open-source single sign-on and identity management.","https://www.keycloak.org"],
+["KeePassXC","Identity","Offline password manager with a local encrypted database.","https://keepassxc.org"],
+["YubiKey","Identity","Hardware security keys for phishing-resistant sign-in.","https://www.yubico.com"],
+["Have I Been Pwned","Identity","Checks whether your email appeared in known data breaches.","https://haveibeenpwned.com"],
+["Cryptomator","Crypto","Encrypts files before they sync to cloud storage.","https://cryptomator.org"],
+["Let's Encrypt","Crypto","Free, automated TLS certificates for websites.","https://letsencrypt.org"]
+];
+const cats=["All",...new Set(TOOLS.map(t=>t[1]))];
+const fEl=document.getElementById("filters"),gEl=document.getElementById("grid");
+let cur="All";
+function render(){
+ fEl.innerHTML="";
+ cats.forEach(c=>{const b=document.createElement("button");b.textContent=c;b.setAttribute("aria-pressed",c===cur);b.onclick=()=>{cur=c;render()};fEl.appendChild(b)});
+ gEl.innerHTML="";
+ TOOLS.filter(t=>cur==="All"||t[1]===cur).forEach(t=>{
+  const d=document.createElement("article");d.className="card";
+  d.innerHTML='<h3></h3><div class="cat"></div><p></p><a target="_blank" rel="noopener noreferrer">Visit site</a>';
+  d.querySelector("h3").textContent=t[0];d.querySelector(".cat").textContent=t[1];
+  d.querySelector("p").textContent=t[2];d.querySelector("a").href=t[3];
+  gEl.appendChild(d)});
+}
+render();
+
+const pwin=document.getElementById("pwin"),pwout=document.getElementById("pwout"),bars=document.querySelectorAll(".meter i");
+pwin.addEventListener("input",()=>{
+ const p=pwin.value;
+ if(!p){bars.forEach(b=>b.style.background="");pwout.textContent="Waiting for input.";return}
+ let pool=0;if(/[a-z]/.test(p))pool+=26;if(/[A-Z]/.test(p))pool+=26;if(/\d/.test(p))pool+=10;if(/[^A-Za-z0-9]/.test(p))pool+=32;
+ let bits=Math.log2(pool)*p.length;
+ if(/^(password|123456|qwerty|letmein|admin)/i.test(p)||/(.)\1{3,}/.test(p))bits=Math.min(bits,24);
+ const lvl=bits<36?1:bits<60?2:bits<80?3:4;
+ const names=["","Weak","Fair","Good","Strong"],cols=["","var(--bad)","var(--bad)","var(--ok)","var(--ok)"];
+ bars.forEach((b,i)=>b.style.background=i<lvl?cols[lvl]:"");
+ pwout.textContent=names[lvl]+" (about "+Math.round(bits)+" bits). "+(lvl<3?"Make it longer and avoid common words.":"Use it only on one account.");
+});
+
+const hsin=document.getElementById("hsin"),hsout=document.getElementById("hsout");
+hsin.addEventListener("input",async()=>{
+ if(!hsin.value){hsout.textContent="Waiting for input.";return}
+ try{
+  const buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(hsin.value));
+  hsout.textContent=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
+ }catch(e){hsout.textContent="Hashing needs a secure (HTTPS) page."}
+});
+</script>
+</body>
+</html>
